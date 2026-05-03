@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PYQs Download - Defence Knowledge with Brapiya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .pyq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .pyq-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            transition: 0.3s;
+            border-left: 5px solid #c0392b;
+        }
+        .pyq-card:hover { transform: translateX(5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .year-badge { background: #0a2a3a; color: #ffb347; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; }
+        .download-btn { background: #c0392b; color: white; border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer; margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+        .download-btn:hover { background: #a93226; }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><span><i class="fas fa-envelope"></i> army963199@gmail.com</span><span><i class="fas fa-user-graduate"></i> Ankit Kumar Brapiya</span></div></div>
+    <header><div class="container"><div class="logo"><i class="fas fa-shield-alt"></i><div><h1>Defence Knowledge</h1><p>with Brapiya</p></div></div><nav><ul><li><a href="index.html">Home</a></li><li><a href="nda.html">NDA</a></li><li><a href="cds.html">CDS</a></li><li><a href="afcat.html">AFCAT</a></li><li><a href="navy.html">Navy</a></li><li><a href="airforce.html">Air Force</a></li><li><a href="army.html">Army</a></li><li><a href="ssb.html">SSB</a></li><li><a href="pyq.html">PYQs</a></li><li><a href="mcq.html">MCQs</a></li><li><a href="contact.html">Contact</a></li></ul></nav><div class="menu-toggle"><i class="fas fa-bars"></i></div></div></header>
+    <section class="hero"><div class="container"><h1>📚 Previous Year Questions Download</h1><p>NDA • CDS • AFCAT • Navy • Army • Air Force - Solved Papers by Brapiya</p></div></section>
+    <div class="container"><div class="pyq-grid" id="pyqGrid"></div></div>
+    <footer><div class="container"><div class="copyright"><p>© 2025 Defence Knowledge with Brapiya | Download PYQs for Free | जय हिन्द</p></div></div></footer>
+    <script>
+        const pyqData = [
+            { exam: "NDA", year: "2024", title: "NDA 2 2024 - Mathematics & GAT", subject: "Full Paper" },
+            { exam: "NDA", year: "2023", title: "NDA 1 2023 - Mathematics Solved", subject: "Mathematics" },
+            { exam: "NDA", year: "2023", title: "NDA 2 2023 - GAT Solved", subject: "GAT" },
+            { exam: "CDS", year: "2024", title: "CDS 1 2024 - English, GK, Maths", subject: "All Subjects" },
+            { exam: "CDS", year: "2023", title: "CDS 2 2023 - Full Paper Set", subject: "Complete" },
+            { exam: "AFCAT", year: "2024", title: "AFCAT 01/2024 - Reasoning & GA", subject: "Reasoning + GK" },
+            { exam: "AFCAT", year: "2023", title: "AFCAT 02/2023 - Previous Year Paper", subject: "Full Paper" },
+            { exam: "Navy", year: "2024", title: "Indian Navy SSR 2024 - Science & Maths", subject: "Science + Maths" },
+            { exam: "Air Force", year: "2024", title: "IAF Group X 2024 - Physics & Maths", subject: "Technical" },
+            { exam: "Army", year: "2024", title: "Army GD 2024 - GK & Reasoning", subject: "Soldier GD" }
+        ];
+        function displayPYQs() {
+            const grid = document.getElementById('pyqGrid');
+            grid.innerHTML = pyqData.map(item => `<div class="pyq-card"><div style="display:flex; justify-content:space-between; align-items:center"><strong>${item.exam}</strong><span class="year-badge">${item.year}</span></div><h3>${item.title}</h3><p><strong>Subject:</strong> ${item.subject}</p><button class="download-btn" onclick="alert('📥 ${item.title}\\n\\nContact Brapiya for Full PDF:\\narmy963199@gmail.com\\nComing soon on website!')"><i class="fas fa-download"></i> Download PDF</button></div>`).join('');
+        }
+        displayPYQs();
+    </script>
+</body>
+</html>

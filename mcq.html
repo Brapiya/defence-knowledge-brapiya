@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MCQ Practice - Defence Knowledge with Brapiya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .mcq-container { background: white; border-radius: 28px; padding: 30px; margin: 40px auto; max-width: 900px; }
+        .question-card { background: #f8fafc; border-radius: 20px; padding: 20px; margin-bottom: 20px; }
+        .question-text { font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; }
+        .option { margin: 10px 0; padding: 10px 15px; background: white; border-radius: 12px; cursor: pointer; border: 1px solid #e2e8f0; }
+        .option:hover { background: #eef2ff; border-color: #c0392b; }
+        .option.selected { background: #c0392b; color: white; }
+        .submit-btn { background: #0a2a3a; color: white; padding: 12px 30px; border: none; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 20px; }
+        .result-box { margin-top: 25px; padding: 20px; background: #e8f5e9; border-radius: 20px; text-align: center; display: none; }
+        .score { font-size: 2rem; font-weight: 800; color: #2e7d32; }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><span><i class="fas fa-envelope"></i> army963199@gmail.com</span><span><i class="fas fa-user-graduate"></i> Ankit Kumar Brapiya</span></div></div>
+    <header><div class="container"><div class="logo"><i class="fas fa-shield-alt"></i><div><h1>Defence Knowledge</h1><p>with Brapiya</p></div></div><nav><ul><li><a href="index.html">Home</a></li><li><a href="nda.html">NDA</a></li><li><a href="cds.html">CDS</a></li><li><a href="afcat.html">AFCAT</a></li><li><a href="navy.html">Navy</a></li><li><a href="airforce.html">Air Force</a></li><li><a href="army.html">Army</a></li><li><a href="ssb.html">SSB</a></li><li><a href="pyq.html">PYQs</a></li><li><a href="mcq.html">MCQs</a></li><li><a href="contact.html">Contact</a></li></ul></nav><div class="menu-toggle"><i class="fas fa-bars"></i></div></div></header>
+    <section class="hero"><div class="container"><h1>📝 Defence MCQ Practice Zone</h1><p>Test your knowledge with Brapiya's MCQ Series</p></div></section>
+    <div class="mcq-container"><div id="questionsArea"></div><button class="submit-btn" onclick="submitMCQ()">Submit Answers</button><div class="result-box" id="resultBox"><h3>Your Score</h3><div class="score" id="scoreDisplay">0/0</div><p id="feedbackMsg"></p></div></div>
+    <footer><div class="container"><div class="copyright"><p>© 2025 Defence Knowledge with Brapiya | More MCQs Added Daily | जय हिन्द</p></div></div></footer>
+    <script>
+        const questions = [
+            { q: "Who is known as the 'Father of Indian Army'?", options: ["Subhash Chandra Bose", "Maharana Pratap", "Stringer Lawrence", "Sam Manekshaw"], correct: 2 },
+            { q: "Which is the highest peacetime gallantry award in India?", options: ["Param Vir Chakra", "Ashok Chakra", "Maha Vir Chakra", "Kirti Chakra"], correct: 1 },
+            { q: "What is the full form of COAS?", options: ["Chief of Air Staff", "Commander of Army Staff", "Chief of Army Staff", "Central Army Officer"], correct: 2 },
+            { q: "Battle of Plassey was fought in?", options: ["1757", "1764", "1775", "1857"], correct: 0 },
+            { q: "Who is the Supreme Commander of Indian Armed Forces?", options: ["Prime Minister", "Defence Minister", "President", "CDS"], correct: 2 }
+        ];
+        let userAnswers = {};
+        function loadQuestions() { const area = document.getElementById('questionsArea'); area.innerHTML = questions.map((q, idx) => `<div class="question-card"><div class="question-text">${idx+1}. ${q.q}</div>${q.options.map((opt, optIdx) => `<div class="option" onclick="selectOption(${idx}, ${optIdx})">${String.fromCharCode(65+optIdx)}. ${opt}</div>`).join('')}</div>`).join(''); }
+        function selectOption(qIdx, optIdx) { userAnswers[qIdx] = optIdx; const container = document.querySelectorAll('.question-card')[qIdx]; const opts = container.querySelectorAll('.option'); opts.forEach(opt => opt.classList.remove('selected')); opts[optIdx].classList.add('selected'); }
+        function submitMCQ() { let score = 0; questions.forEach((q, idx) => { if(userAnswers[idx] !== undefined && userAnswers[idx] === q.correct) score++; }); document.getElementById('scoreDisplay').innerText = `${score}/${questions.length}`; let msg = score >= 4 ? "🎖️ Excellent! SSB ready!" : score >= 3 ? "👍 Good! Practice more" : "💪 Need more practice. Keep learning!"; document.getElementById('feedbackMsg').innerHTML = msg; document.getElementById('resultBox').style.display = "block"; window.scrollTo({ top: document.getElementById('resultBox').offsetTop - 100, behavior: 'smooth' }); }
+        loadQuestions();
+    </script>
+</body>
+</html>

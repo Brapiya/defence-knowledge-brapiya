@@ -1,0 +1,204 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+                <h1>Defence <span>Knowledge</span></h1>
+                <p>with Brapiya</p>
+            </div>
+        </div>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+            
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="fas fa-star-of-life"></i> Exams <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="nda.html"><i class="fas fa-star-of-life"></i> NDA</a>
+                    <a href="cds.html"><i class="fas fa-graduation-cap"></i> CDS</a>
+                    <a href="afcat.html"><i class="fas fa-plane"></i> AFCAT</a>
+                    <a href="navy.html"><i class="fas fa-ship"></i> Indian Navy</a>
+                    <a href="airforce.html"><i class="fas fa-fighter-jet"></i> Air Force</a>
+                    <a href="army.html"><i class="fas fa-tank"></i> Indian Army</a>
+                </div>
+            </li>
+            
+            <li class="nav-item"><a href="ssb.html" class="nav-link"><i class="fas fa-chalkboard-user"></i> SSB Interview</a></li>
+            
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="fas fa-file-alt"></i> Study Material <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="pyq.html"><i class="fas fa-file-pdf"></i> Previous Year Papers</a>
+                    <a href="mcq.html"><i class="fas fa-question-circle"></i> Practice MCQs</a>
+                    <a href="defence-gk.html"><i class="fas fa-globe"></i> Defence GK</a>
+                    <a href="current-affairs.html"><i class="fas fa-newspaper"></i> Current Affairs</a>
+                </div>
+            </li>
+            
+            <li class="nav-item"><a href="physical-standards.html" class="nav-link"><i class="fas fa-heartbeat"></i> Physical Standards</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+            
+            <!-- Tools Website Link -->
+            <li class="nav-item"><a href="../brapiya-tools/index.html" class="nav-link"><i class="fas fa-tools"></i> Brapiya Tools</a></li>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Search defence topics..." id="searchInput">
+                <button onclick="searchDefence()"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+        </ul>
+        
+        <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #0a2a3a, #1e4a6a);
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+    }
+    
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo i { font-size: 2rem; color: #ffb347; }
+    .logo h1 { font-size: 1.3rem; color: white; }
+    .logo span { color: #ffb347; }
+    .logo p { font-size: 0.65rem; color: rgba(255,255,255,0.7); }
+    
+    .nav-menu { display: flex; align-items: center; gap: 5px; list-style: none; margin: 0; padding: 0; }
+    .nav-link { display: flex; align-items: center; gap: 8px; padding: 10px 16px; color: white; text-decoration: none; border-radius: 40px; transition: 0.3s; font-size: 0.9rem; }
+    .nav-link:hover { background: rgba(255,255,255,0.1); }
+    .nav-link.active { background: #c0392b; }
+    .nav-link i { font-size: 1rem; }
+    
+    .nav-item { position: relative; }
+    .dropdown-menu {
+        position: absolute;
+        top: 45px;
+        left: 0;
+        background: white;
+        min-width: 220px;
+        border-radius: 12px;
+        padding: 8px 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; top: 50px; }
+    .dropdown-menu a { display: flex; align-items: center; gap: 10px; padding: 8px 20px; color: #333; text-decoration: none; font-size: 0.85rem; }
+    .dropdown-menu a:hover { background: #f0f0f0; color: #c0392b; }
+    
+    .search-box { display: flex; background: rgba(255,255,255,0.15); border-radius: 40px; padding: 5px 15px; margin-left: 10px; }
+    .search-box input { background: transparent; border: none; padding: 8px; color: white; outline: none; width: 160px; }
+    .search-box input::placeholder { color: rgba(255,255,255,0.6); }
+    .search-box button { background: none; border: none; color: white; cursor: pointer; }
+    
+    .theme-toggle, .menu-toggle { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; padding: 8px; border-radius: 50%; }
+    .menu-toggle { display: none; }
+    
+    @media (max-width: 1024px) {
+        .menu-toggle { display: block; }
+        .nav-menu {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 80%;
+            height: calc(100vh - 70px);
+            background: #0a2a3a;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            transition: 0.3s;
+            overflow-y: auto;
+        }
+        .nav-menu.active { left: 0; }
+        .nav-item { width: 100%; }
+        .nav-link { width: 100%; }
+        .dropdown-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            display: none;
+            background: rgba(255,255,255,0.1);
+            margin-left: 20px;
+            width: calc(100% - 20px);
+        }
+        .dropdown-menu a { color: white; }
+        .nav-item.active-dropdown .dropdown-menu { display: block; }
+        .search-box { width: 100%; margin: 10px 0; }
+        .search-box input { width: 100%; }
+    }
+    
+    body.dark { background: #1a1a2e; }
+    body.dark .dropdown-menu { background: #2d2d44; }
+    body.dark .dropdown-menu a { color: #ccc; }
+    
+    /* Content padding for fixed navbar */
+    body { padding-top: 70px; }
+</style>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('navMenu').classList.toggle('active');
+    }
+    
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        const icon = document.querySelector('.theme-toggle i');
+        if (document.body.classList.contains('dark')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+    
+    function searchDefence() {
+        let query = document.getElementById('searchInput').value;
+        if(query) window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+    }
+    
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+        const icon = document.querySelector('.theme-toggle i');
+        if(icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+    }
+    
+    if (window.innerWidth <= 1024) {
+        document.querySelectorAll('.nav-item').forEach(item => {
+            let link = item.querySelector('.nav-link');
+            if (item.querySelector('.dropdown-menu')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.classList.toggle('active-dropdown');
+                });
+            }
+        });
+    }
+    
+    // Active link highlight
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+</script>
